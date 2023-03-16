@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+op=$( echo -e " Lock\n Poweroff\n Reboot\n Suspend\n Logout" | wofi -c ~/.config/wofi/powermenu.config | awk '{print tolower($2)}' )
+
+case $op in 
+        poweroff)
+                ;&
+        reboot)
+                ;&
+        suspend)
+                systemctl $op
+                ;;
+        lock)
+		swaylock
+                ;;
+        logout)
+                swaymsg exit
+                ;;
+esac
+
