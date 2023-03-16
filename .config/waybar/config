@@ -1,0 +1,210 @@
+{
+    "layer": "bottom",
+    "position": "top",
+    "height": 52,
+    
+    "modules-left": ["sway/workspaces", "sway/window"],
+    "modules-center": ["custom/weather", "clock"],
+    "modules-right": ["cpu", "temperature", "memory", "pulseaudio", "bluetooth", "network", "idle_inhibitor", "battery", "tray", "custom/notification"],
+    
+    /* Left */
+    
+    "sway/workspaces": {
+        "format": "{name}",
+        "disable-scroll": true
+    },
+    
+    "sway/window": {
+        "max-length": 80,
+        "tooltip": false
+    },
+    
+    /* Center */
+    
+    "custom/weather": {
+        "format": "{}",
+        "format-alt-click": "click-right",
+        "interval": 1800,
+        "return-type": "json",
+        "exec": "~/.config/waybar/modules/weather.sh London",
+        "exec-if": "ping wttr.in -c1"
+    },
+    
+    "clock": {
+        "format": "{:  %A  <b>%Y-%m-%d</b>  %H:%M:%S  }",
+        "interval": 1,
+        "tooltip": true
+    },
+    
+    
+    /* Right */
+    
+    
+    "cpu": {
+        "interval": 1,
+        "format": " {usage}%{icon}",
+        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+        "states": {
+            "warning": 70,
+            "critical": 95
+        }
+    },
+    
+    "temperature": {
+        "interval": 5,
+        "format": "{icon} {temperatureC}°C",
+        "critical-threshold": 75,
+        "format-icons": ["", "", "", "", ""]
+    },
+    
+    "memory": {
+        "interval": 5,
+        "format": " {percentage}%{icon}",
+        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
+    },
+    
+    "pulseaudio": {
+        "format": "{volume}{icon} ",
+        "format-muted": "mute ",
+        "format-icons": {
+            "phone": [" ", " ", " ", " "],
+            "default": ["", "", "", ""]
+        },
+        "scroll-step": 10,
+        "on-click": "gnome-control-center sound",
+        "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "tooltip": false
+    },
+
+    "bluetooth": {
+        "format": " "
+    },
+    
+    "network": {
+        "format": "{icon}",
+        "format-wifi": "{icon}",
+        "format-alt": "{essid} {icon}",
+        "format-alt-click": "click-right",
+        "format-ethernet": "{icon}",
+        "format-icons": {
+            "wifi": ["", "" ,""],
+            "ethernet": [""],
+            "disconnected": [""]
+        },
+        "on-click": "gnome-control-center network",
+        "on-click-right": "gnome-control-center wifi",
+        "tooltip": true,
+        "tooltip-format": "Name: {essid}\nFrequency {frequency}\nIP: {ipaddr}\nGateway: {gwaddr}\nSignal: {signalStrength}%\nUP: {bandwidthUpBytes}\nDown: {bandwidthDownBytes}"
+    },
+    
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        },
+        "tooltip": false
+    },
+    
+    "battery": {
+        "adapter": "AC" ,
+        "bat": "BAT0",
+        "full_at": 98,
+        "format": "{capacity}% {icon}",
+        "format-alt": "{time} {icon}",
+        "format-alt-click": "click-right",
+        "format-icons": [" ", " ", " ", " ", " "],
+        "format-charging": "Charging {capacity}%  ",
+        "format-plugged": "{capacity} ",
+        "format-warning": "Warning {capacity}% {icon}",
+        "format-critical": "Critical {capacity}% {icon}",
+        "interval": 30,
+        "states": {
+            "warning": 25,
+            "critical": 10
+        },
+        "tooltip": true
+    },
+    
+    "tray": {
+        "icon-size": 32,
+        "spacing": 30
+    },
+
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-none": "",
+            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+    
+    
+    /* Unused */
+    
+    "custom/test": {
+        "format": "pippo {}",
+        "format-alt": "{alt}: {}",
+        "format-alt-click": "click-right",
+        "exec": "~/.config/waybar/modules/test.sh",
+        "exec_if": "true",
+        "param": "blah",
+        "interval": 5,
+        "return-type": "json"
+    },
+    
+    "backlight": {
+        "format": "{icon}",
+        "format-alt": "{percent}% {icon}",
+        "format-alt-click": "click-right",
+        "format-icons": ["", ""],
+        "on-scroll-down": "light -U 1",
+        "on-scroll-up": "light -A 1"
+    },
+    
+    "sway/mode": {
+        "format": " {}"
+    },
+    
+    "custom/spotify": {
+        "interval": 1,
+        "return-type": "json",
+        "exec": "~/.config/waybar/modules/spotify.sh",
+        "exec-if": "pgrep spotify",
+        "escape": true
+    },
+    
+    "custom/storage": {
+        "format": "{} ",
+        "format-alt": "{percentage}% ",
+        "format-alt-click": "click-right",
+        "return-type": "json",
+        "interval": 60,
+        "exec": "~/.config/waybar/modules/storage.sh"
+    },
+    
+    "custom/mail": {
+        "format": "",
+        "format-alt": "{alt} ",
+        "format-alt-click": "click-right",
+        "interval": 60,
+        "return-type": "json",
+        "exec": "~/.config/waybar/modules/mail.py",
+        "tooltip": false
+    }
+    
+}
+
