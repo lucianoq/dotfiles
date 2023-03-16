@@ -1,0 +1,24 @@
+color=282A36
+indicator-radius=100
+indicator-thickness=30
+inside-color=282A36
+layout-bg-color=282A36
+layout-border-color=282A36
+layout-text-color=FFFFFF
+line-color=44475A
+ring-color=44475A
+separator-color=44475A
+text-caps-lock-color=FFFFFF
+text-clear-color=FFFFFF
+text-color=FFFFFF
+text-ver-color=FFFFFF
+text-wrong-color=FFFFFF
+
+# Flags
+daemonize
+ignore-empty-password
+indicator-caps-lock
+show-failed-attempts
+#show-keyboard-layout
+indicator-idle-visible
+
