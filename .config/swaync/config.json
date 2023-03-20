@@ -1,29 +1,41 @@
 {
   "$schema": "/etc/xdg/swaync/configSchema.json",
+  
   "positionX": "right",
   "positionY": "top",
+  
+  /* Using `top` instead of `overlay` so grimshot can open over it */
   "layer": "top",
-  "cssPriority": "application",
-  "control-center-margin-top": 0,
-  "control-center-margin-bottom": 0,
-  "control-center-margin-right": 0,
-  "control-center-margin-left": 300,
-  "notification-icon-size": 64,
-  "notification-body-image-height": 100,
+  
+  "cssPriority": "user",
+  "notification-window-width": 750,
+  
+  "control-center-positionX": "right",
+  "control-center-positionY": "top",
+  "control-center-margin-top": 15,
+  "control-center-margin-bottom": 15,
+  "control-center-margin-right": 15,
+  "control-center-margin-left": 15,
+  "control-center-width": 800,
+  "control-center-height": 900,
+  
+  "fit-to-screen": true,
+  
+  "notification-icon-size": 100,
+  "notification-body-image-height": 200,
   "notification-body-image-width": 200,
   "timeout": 10,
   "timeout-low": 5,
   "timeout-critical": 0,
-  "fit-to-screen": false,
-  "control-center-width": 800,
-  "control-center-height": 900,
-  "notification-window-width": 600,
+  
+  
   "keyboard-shortcuts": true,
   "image-visibility": "when-available",
   "transition-time": 200,
   "hide-on-clear": false,
   "hide-on-action": true,
   "script-fail-notify": true,
+  /*
   "scripts": {
     "example-script": {
       "exec": "echo 'Do something...'",
@@ -42,13 +54,13 @@
       "app-name": "Spotify"
     }
   },
+  */
   "widgets": [
-    "inhibitors",
-    "title",
-    "dnd",
+    "volume",
     "notifications"
   ],
   "widget-config": {
+    /*
     "inhibitors": {
       "text": "Inhibitors",
       "button-text": "Clear All",
@@ -56,7 +68,7 @@
     },
     "title": {
       "text": "Notifications",
-      "clear-all-button": true,
+      "clear-all-button": false,
       "button-text": "Clear All"
     },
     "dnd": {
@@ -69,6 +81,10 @@
     "mpris": {
       "image-size": 96,
       "image-radius": 12
+    },
+    */ 
+    "volume": {
+      "label": ""
     }
   }
 }

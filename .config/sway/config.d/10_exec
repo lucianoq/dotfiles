@@ -2,9 +2,9 @@
 # Run services
 ##############
 
-exec swaync
-exec wl-paste --watch ~/bin/cliphist store
-exec ~/.azotebg
+exec --no-startup-id "swaync"
+exec --no-startup-id "wl-paste --watch ~/bin/cliphist store"
+exec --no-startup-id "~/.azotebg"
 
 ### Idle configuration
 #

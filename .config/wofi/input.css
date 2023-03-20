@@ -21,14 +21,14 @@ author: "arcticicestudio"
 @define-color base0F #B48EAD;
 
 * {
-  font-family: "FiraCode Nerd Font";
-  font-size: 30;
+  font-family: "Hack";
+  font-size: 16px;
 }
 
 #entry {
   border-radius: 0px;
-  padding: 15px 30px;
-  margin: 10px auto;
+  padding: 2px 1px 2px 1px;
+  margin: 0px 2px 0px 2px;
 }
 
 @keyframes fadeIn {
@@ -52,7 +52,6 @@ author: "arcticicestudio"
 }
 
 #input {
-  display:none;
   border: none;
   background-color: rgba (0,0,0,0.8);
   border-radius: 0px;
@@ -65,6 +64,10 @@ author: "arcticicestudio"
   color: rgba (255,0,0,0.5);
   border-radius: 0px;
   /* margin-right: 180px; */
+}
+
+#inner-box flowboxchild:nth-child(even) {
+  background-color: #FF0000;
 }
 
 #outer-box {

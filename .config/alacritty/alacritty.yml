@@ -109,77 +109,23 @@ scrolling:
 font:
   normal:
     style: Regular
-    
-    # Default:
-    #   - (macOS) Menlo
-    #   - (Linux/BSD) monospace
-    #   - (Windows) Consolas
-    # family: Source Code Pro
-    # family: Font Awesome 6 Free
-    # family: Fira Code
-    # family: CodeNewRoman Nerd Font
-    # family: RobotoMono Nerd Font
     family: FiraCode Nerd Font
-    # family: JetBrains Mono
-    # family: UbuntuMono Nerd Font
-    # family: Monofur Nerd Font
-    # family: TerminessTTF Nerd Font
-    # family: Mononoki Nerd Font
 
   bold:
     style: Bold
-    
-    # If the bold family is not specified, it will fall back to the
-    # value specified for the normal font.
-    # family: Source Code Pro
-    # family: Fira Code
-    # family: CodeNewRoman Nerd Font
-    # family: RobotoMono Nerd Font
-    # family: Hack
-    # family: JetBrains Mono
-    # family: UbuntuMono Nerd Font
-    # family: Monofur Nerd Font
-    # family: TerminessTTF Nerd Font
-    # family: Mononoki Nerd Font
     family: FiraCode Nerd Font
 
   italic:
     style: Italic
-
-    # If the italic family is not specified, it will fall back to the
-    # value specified for the normal font.
-    # family: Source Code Pro
-    # family: Fira Code
-    # family: CodeNewRoman Nerd Font
-    # family: RobotoMono Nerd Font
-    # family: Hack
-    # family: JetBrains Mono
-    # family: UbuntuMono Nerd Font
-    # family: Monofuritalic Nerd Font Mono
-    # family: TerminessTTF Nerd Font
-    # family: Mononoki Nerd Font
     family: FiraCode Nerd Font
 
   # Bold italic font face
   bold_italic:
     style: Bold Italic
-    
-    # If the bold italic family is not specified, it will fall back to the
-    # value specified for the normal font.
-    # family: Source Code Pro
-    # family: Fira Code
-    # family: CodeNewRoman Nerd Font
-    # family: RobotoMono Nerd Font
-    # family: Hack
-    # family: JetBrains Mono
-    # family: UbuntuMono Nerd Font
-    # family: Monofuritalic Nerd Font Mono
-    # family: TerminessTTF Nerd Font
-    # family: Mononoki Nerd Font
     family: FiraCode Nerd Font
 
-  # Point size
   size: 12.0
+  ligatures: true
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -560,7 +506,7 @@ colors: *Dracula
 #   - Linear
 #
 # Specifying a `duration` of `0` will disable the visual bell.
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 500
   color: '#dddddd'
@@ -582,7 +528,7 @@ cursor:
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
-  #unfocused_hollow: true
+  unfocused_hollow: true
 
 # Live config reload (changes require restart)
 #live_config_reload: true
@@ -806,6 +752,7 @@ key_bindings:
   - { key: Insert,    mods: Shift,         action: Paste                       }
   - { key: Insert,    mods: Control,       action: Copy                        }
   - { key: Key0,      mods: Control,       action: ResetFontSize               }
+  - { key: Numpad0,   mods: Control,       action: ResetFontSize               }
   - { key: Equals,    mods: Control,       action: IncreaseFontSize            }
   - { key: Plus,      mods: Control,       action: IncreaseFontSize            }
   - { key: Minus,     mods: Control,       action: DecreaseFontSize            }
@@ -818,6 +765,3 @@ key_bindings:
   - { key: PageDown,  mods: None,          action: ScrollPageDown              }
   - { key: Home,      mods: Shift,         action: ScrollToTop                 }
   - { key: End,       mods: Shift,         action: ScrollToBottom              }
-    #- { key: End,       mods: Shift,         action: ScrollToBottom, mode: ~Alt  }
-
-

@@ -2,67 +2,29 @@
 * vim: ft=less
 */
 
-@define-color bg-selected rgb(0, 128, 255);
-@define-color cc-bg rgba(42, 42, 42, 0.8);
+@define-color cc-bg rgba(0, 0, 0, 0.7);
 @define-color noti-border-color rgba(255, 255, 255, 0.15);
-@define-color noti-bg rgba(55, 55, 55, 0.8);
-@define-color noti-bg-hover rgba(65, 65, 65, 0.8);
+@define-color noti-bg rgb(48, 48, 48);
+@define-color noti-bg-hover rgb(56, 56, 56);
 @define-color noti-bg-focus rgba(68, 68, 68, 0.6);
 @define-color noti-close-bg rgba(255, 255, 255, 0.1);
 @define-color noti-close-bg-hover rgba(255, 255, 255, 0.15);
-
-
-* {
-    font-family: "FiraCode Nerd Font";
-    color: #eceff4;
-}
-
-.control-center {
-    opacity: 1;
-}
-
-.control-center .notification {
-    box-shadow: none;
-}
-.control-center .notification-row {
-    transition: all 200ms ease;
-    outline: none;
-    margin-bottom: 4px;
-    border-radius: 12px;
-    opacity: 0.7;
-}
-.control-center .notification-row:focus,
-.control-center .notification-row:hover {
-    opacity: 1;
-    background: transparent;
-}
-
-.control-center .notification-row:focus .notification,
-.control-center .notification-row:hover .notification {
-    box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 0px 0px 3px @bg-selected;
-}
+@define-color bg-selected rgb(0, 128, 255);
 
 .notification-row {
-    
+    outline: none;
+}
+.notification-row:focus,
+.notification-row:hover {
+    background: @noti-bg-focus;
 }
 
 .notification {
-    transition: all 200ms ease;
     border-radius: 12px;
-    
-    margin-left:30px;
-    margin-right:30px;
-    margin-top: 6px;
-    margin-bottom: 6px;
-    
-    box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.5);
-    
+    margin: 6px 12px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.7),
+    0 2px 6px 2px rgba(0, 0, 0, 0.3);
     padding: 0;
-    /* padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 30px;
-    padding-right: 30px; */
 }
 
 /* Uncomment to enable specific urgency colors
@@ -87,7 +49,7 @@
 
 .notification-content {
     background: transparent;
-    padding: 10px;
+    padding: 6px;
     border-radius: 12px;
 }
 
@@ -98,7 +60,7 @@
     padding: 0;
     border-radius: 100%;
     margin-top: 10px;
-    margin-right: 35px;
+    margin-right: 16px;
     box-shadow: none;
     border: none;
     min-width: 24px;
@@ -120,7 +82,6 @@
     background: @noti-bg;
     border: 1px solid @noti-border-color;
     color: white;
-    transition: all 200ms ease;
 }
 
 .notification-default-action:hover,
@@ -156,25 +117,24 @@
 }
 
 .image {
-    margin: 15px;
 }
 
-.image > * {
-    border-radius: 50%;
+.body-image {
+    margin-top: 6px;
+    background-color: white;
+    border-radius: 10px;
 }
 
 .summary {
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
     background: transparent;
     color: white;
     text-shadow: none;
-    padding: 5px;
 }
 
 .time {
-    padding: 10px;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     background: transparent;
     color: white;
@@ -182,23 +142,24 @@
     margin-right: 18px;
 }
 
+* {
+    font-family: "FiraCode Nerd Font";
+}
+
 .body {
-    margin-top: 10px;
-    padding: 5px 5px 5px 5px;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: normal;
     background: transparent;
     color: white;
     text-shadow: none;
+    padding: 10px;
 }
 
 .control-center {
     background: @cc-bg;
-    border-radius: 12px;
-    background-clip: border-box;
-    padding: 4px;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.7),
-    0 2px 6px 2px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    color: #FFF;
+    padding: 10px 30px 10px;
 }
 
 .control-center-list {
@@ -206,7 +167,7 @@
 }
 
 .control-center-list-placeholder {
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
 .floating-notifications {
@@ -215,7 +176,7 @@
 
 /* Window behind control center and on all other monitors */
 .blank-window {
-    background: transparent;
+    background: alpha(black, 0.25);
 }
 
 /*** Widgets ***/
@@ -223,7 +184,7 @@
 /* Title widget */
 .widget-title {
     margin: 8px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 .widget-title > button {
     font-size: initial;
@@ -260,7 +221,7 @@
 
 /* Label widget */
 .widget-label {
-    margin: 20px;
+    margin: 8px;
 }
 .widget-label > label {
     font-size: 1.1rem;
@@ -269,14 +230,10 @@
 /* Mpris widget */
 .widget-mpris {
     /* The parent to all players */
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
 .widget-mpris-player {
-    padding: 10px;
-    margin: 10px;
-    background-color: @noti-bg;
-    border-radius: 12px;
+    padding: 8px;
+    margin: 8px;
 }
 .widget-mpris-title {
     font-weight: bold;
@@ -285,12 +242,6 @@
 .widget-mpris-subtitle {
     font-size: 1.1rem;
 }
-/* .widget-mpris > box > button {
-    background-color: #f00;
-}
-.widget-mpris > box > button:disabled {
-    background-color: #f00;
-} */
 
 /* Buttons widget */
 .widget-buttons-grid {
@@ -340,29 +291,9 @@
 
 .widget-volume {
     background-color: @noti-bg;
-    
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 30px;
-    padding-right: 30px;
-    margin: 30px;
-    
+    padding: 8px;
+    margin: 8px;
     border-radius: 12px;
-    
-    transition: all 200ms ease;
-    outline: none;
-    opacity: 0.9;
-}
-
-.widget-volume:focus,
-.widget-volume:hover {
-    background: @noti-bg-hover;
-}
-
-.widget-volume label {
-    font-size: 1.5em;
-    padding: 10px;
-    margin: 10px;
 }
 
 /* Backlight widget */
@@ -376,7 +307,7 @@
 /* Title widget */
 .widget-inhibitors {
     margin: 8px;
-    font-size: 1.5rem;
+    font-size: 1.rem;
 }
 .widget-inhibitors > button {
     font-size: initial;

@@ -10,28 +10,26 @@ set $right l
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-bindsym   Alt+grave exec ~/bin/cliphist list | wofi -c ~/.config/wofi/clipboard.config -p copy | ~/bin/cliphist decode | wl-copy
-bindsym  $mod+grave exec wofi -c ~/.config/wofi/launcher.config
-bindsym Pause       exec ~/bin/wofi-power-menu
-bindsym $mod+Delete exec ~/bin/wofi-power-menu
+bindsym   Alt+grave exec "pgrep -x wofi >/dev/null 2>&1 && killall wofi || ~/bin/cliphist list | wofi -c ~/.config/wofi/clipboard.config -p copy | ~/bin/cliphist decode | wl-copy"
+bindsym  $mod+grave exec "pgrep -x wofi >/dev/null 2>&1 && killall wofi || wofi -c ~/.config/wofi/launcher.config"
+bindsym Pause       exec "pgrep -x wofi >/dev/null 2>&1 && killall wofi || ~/bin/wofi-power-menu"
+bindsym $mod+Delete exec "pgrep -x wofi >/dev/null 2>&1 && killall wofi ||  ~/bin/wofi-power-menu"
 
-bindsym         Print exec "grimshot copy area"
-bindsym Control+Print exec "grimshot save area"
-bindsym $mod+space    exec "nautilus -w"
+bindsym               Print exec --no-startup-id "pgrep -x grimshot >/dev/null 2>&1 || grimshot copy area"
+bindsym Control+      Print exec --no-startup-id "pgrep -x grimshot >/dev/null 2>&1 || grimshot save area"
+bindsym Control+Shift+Print exec --no-startup-id "grim -g "$(slurp)" - | tesseract - - | wl-copy"
 
-
-
-
-### Key bindings
+bindsym $mod+space exec "nautilus -w"
 
 # Start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return   exec "alacritty"
+bindsym $mod+KP_Enter exec "alacritty"
 
 # Kill focused window
 bindsym $mod+q kill
 
 # Start your launcher
-bindsym $mod+d exec $menu
+#bindsym $mod+d exec "$menu"
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -61,16 +59,14 @@ bindsym XF86AudioPrev exec playerctl previous
 
 
 # Moving around:
-# Move your focus around
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
+bindsym $mod+$left  focus left
+bindsym $mod+$down  focus down
+bindsym $mod+$up    focus up
 bindsym $mod+$right focus right
-# Or use $mod+[up|down|left|right]
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+Left   focus left
+bindsym $mod+Down   focus down
+bindsym $mod+Up     focus up
+bindsym $mod+Right  focus right
 
 # Move the focused window with the same, but add Shift
 bindsym $mod+Shift+$left move left
@@ -157,19 +153,20 @@ mode "resize" {
     # right will grow the containers width
     # up will shrink the containers height
     # down will grow the containers height
-    bindsym $left resize shrink width 10px
+    bindsym $left resize shrink width 20px
     bindsym $down resize grow height 10px
     bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
+    bindsym $right resize grow width 20px
 
     # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
+    bindsym Left resize shrink width 20px
     bindsym Down resize grow height 10px
     bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
+    bindsym Right resize grow width 20px
 
     # Return to default mode
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+bindsym $mod+n exec swaymsg rename workspace to "$(wofi -c ~/.config/wofi/input.config)"

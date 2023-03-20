@@ -4,8 +4,8 @@
     "height": 52,
     
     "modules-left": ["sway/workspaces", "sway/window"],
-    "modules-center": ["custom/weather", "clock"],
-    "modules-right": ["cpu", "temperature", "memory", "pulseaudio", "bluetooth", "network", "idle_inhibitor", "battery", "tray", "custom/notification"],
+    "modules-center": ["custom/weather", "cpu", "temperature", "memory"],
+    "modules-right": ["pulseaudio", "bluetooth", "network", "idle_inhibitor", "battery", "tray", "clock", "custom/notification"],
     
     /* Left */
     
@@ -31,7 +31,7 @@
     },
     
     "clock": {
-        "format": "{:  %A  <b>%Y-%m-%d</b>  %H:%M:%S  }",
+        "format": "{:%A %d  %H:%M:%S}",
         "interval": 1,
         "tooltip": true
     },
@@ -71,8 +71,8 @@
             "default": ["", "", "", ""]
         },
         "scroll-step": 10,
-        "on-click": "gnome-control-center sound",
-        "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "gnome-control-center sound",
         "tooltip": false
     },
 
